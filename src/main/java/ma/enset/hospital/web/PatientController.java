@@ -36,4 +36,9 @@ public class PatientController {
         patientRepository.deleteById(id);
         return "redirect:/index?page=" + page + "&keyword=" + keyword; // la vue
     }
+
+    @GetMapping("/")
+    public String home(){
+        return "redirect:/index"; // la vue
+    }
 }
