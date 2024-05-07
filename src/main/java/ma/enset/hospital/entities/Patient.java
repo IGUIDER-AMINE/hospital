@@ -2,6 +2,7 @@ package ma.enset.hospital.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -14,16 +15,18 @@ import java.util.Date;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
+//@Data <=> @Getter @Setter @ToString
 public class Patient {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @Size(min = 4, max = 40)
+    @Size(min = 4, max = 20)
     private String nom;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance;
     private boolean malade;
-    @DecimalMin("100")
+    //@DecimalMin("10")
+    @Min(10)
     private int score;
 }
